@@ -1,0 +1,24 @@
+
+const int analogInPin = A2;  
+const int analogOutPin = 10; 
+
+int sensorValue = 0;        
+int outputValue = 0;        
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  sensorValue = analogRead(analogInPin);
+  outputValue = map(sensorValue, 0, 720, 0, 255);
+  analogWrite(analogOutPin, outputValue);
+
+  
+  Serial.print("sensor = ");
+  Serial.print(sensorValue);
+  Serial.print("\t output = ");
+  Serial.println(outputValue);
+
+  delay(2);
+}
